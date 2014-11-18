@@ -32,6 +32,7 @@ setup(**{
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 2.7'
     ],
+    'install_requires': ['GitPython'],
     'tests_require': ['tox'],
     'cmdclass' : {'test' : Tox}
 })
