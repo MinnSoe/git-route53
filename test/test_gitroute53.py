@@ -37,7 +37,6 @@ def create_tmp_repo(folder='tmp/repo'):
     return repo
 
 
-
 @pytest.fixture(scope='module')
 def repo(request):
     folder = 'tmp/git_repo'
@@ -51,12 +50,14 @@ def repo(request):
     return r
 
 
-@pytest.mark.parametrize('name', ['HEAD', 'master', 'remote-branch', 'feature'])
+@pytest.mark.parametrize('name', [
+    'HEAD', 'master', 'remote-branch', 'feature'])
 def test_get_remote_ref_names(repo, name):
     assert name in gitroute53.get_remote_ref_names(repo.working_dir)
 
 
-@pytest.mark.parametrize('name', ['HEAD', 'master', 'remote-branch', 'feature'])
+@pytest.mark.parametrize('name', [
+    'HEAD', 'master', 'remote-branch', 'feature'])
 def test_remote_ref_names_in_current_git_directory(repo, name):
     prev_working_dir = os.getcwd()
     os.chdir(repo.working_dir)
