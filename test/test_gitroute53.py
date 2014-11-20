@@ -62,3 +62,8 @@ def test_remote_ref_names_in_current_git_directory(repo, name):
     os.chdir(repo.working_dir)
     assert name in gitroute53.get_remote_ref_names()
     os.chdir(prev_working_dir)
+
+
+def test_no_local_refs_included(repo):
+    remote_ref_names = gitroute53.get_remote_ref_names(repo.working_dir)
+    assert 'local-branch' not in remote_ref_names
